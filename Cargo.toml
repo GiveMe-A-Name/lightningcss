@@ -6,18 +6,18 @@ members = [
   "c",
   "derive",
   "static-self",
-  "static-self-derive"
+  "static-self-derive",
 ]
 
 [package]
-authors = ["Devon Govett <devongovett@gmail.com>"]
-name = "lightningcss"
-version = "1.0.0-alpha.59"
-description = "A CSS parser, transformer, and minifier"
+authors = ["GiveMe-A-Name <a455300764b@hotmail.com>"]
+name = "lightningcss_rs"
+version = "0.1.0"
+description = "A CSS parser, transformer, and minifier fork from https://github.com/parcel-bundler/lightningcss. Fix some bug for Rspack."
 license = "MPL-2.0"
 edition = "2021"
-keywords = [ "CSS", "minifier", "Parcel" ]
-repository = "https://github.com/parcel-bundler/lightningcss"
+keywords = ["CSS", "minifier", "Parcel"]
+repository = "https://github.com/GiveMe-A-Name/lightningcss"
 
 [package.metadata.docs.rs]
 all-features = true
@@ -41,10 +41,20 @@ cli = ["atty", "clap", "serde_json", "browserslist", "jemallocator"]
 grid = []
 jsonschema = ["schemars", "serde", "parcel_selectors/jsonschema"]
 nodejs = ["dep:serde"]
-serde = ["dep:serde", "smallvec/serde", "cssparser/serde", "parcel_selectors/serde", "into_owned"]
+serde = [
+  "dep:serde",
+  "smallvec/serde",
+  "cssparser/serde",
+  "parcel_selectors/serde",
+  "into_owned",
+]
 sourcemap = ["parcel_sourcemap"]
 visitor = []
-into_owned = ["static-self", "static-self/smallvec", "parcel_selectors/into_owned"]
+into_owned = [
+  "static-self",
+  "static-self/smallvec",
+  "parcel_selectors/into_owned",
+]
 substitute_variables = ["visitor", "into_owned"]
 
 [dependencies]
@@ -74,7 +84,9 @@ schemars = { version = "0.8.19", features = ["smallvec"], optional = true }
 static-self = { version = "0.1.0", path = "static-self", optional = true }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-jemallocator = { version = "0.3.2", features = ["disable_initial_exec_tls"], optional = true }
+jemallocator = { version = "0.3.2", features = [
+  "disable_initial_exec_tls",
+], optional = true }
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 getrandom = { version = "0.2", features = ["custom"], default-features = false }
